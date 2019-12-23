@@ -1,0 +1,6 @@
+<%= form_for @post, url: {action: "update"} do |f| %>
+    <%= f.label :img, 'Image ' %>
+    <%= f.text_field :img %>
+
+    <%= f.submit "Save"%>
+<% end %>

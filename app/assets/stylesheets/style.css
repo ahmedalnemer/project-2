@@ -1,0 +1,17 @@
+body{
+    text-align: center;
+}
+
+main{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.postCard{
+    width: 350px;
+}
+
+.postCard img{
+    width: 300px;
+}

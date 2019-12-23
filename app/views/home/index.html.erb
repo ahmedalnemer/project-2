@@ -1,0 +1,22 @@
+<%if user_signed_in?%>
+    <%= link_to "New", posts_new_path%> | 
+    <%= link_to "Account", edit_user_registration_path%> | 
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete%> |
+<%else%>
+    <%= link_to "SignIn", user_session_path%>
+<%end%>
+
+<br />
+
+<div class="main">
+<% @posts.each do |post| %>
+    <div class="postCard">
+        <img src=<%= post.img%> /><br />
+        <%if current_user && current_user.id == post.user_id%>
+            <%= link_to "Edit", posts_edit_path(post)%> | 
+            <%= link_to "Destroy", posts_destroy_path(post), method: :delete%>
+        <%end%>
+    </div>
+<% end %>
+
+</div>

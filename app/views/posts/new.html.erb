@@ -1,0 +1,7 @@
+<%= form_for :post, url:{action: "create"} do |f|%>
+<%= f.label :img, "image "%>
+<%= f.text_field :img%><br />
+<%= f.number_field :likes%><br />
+
+<%= f.submit "Save"%>
+<% end %>
