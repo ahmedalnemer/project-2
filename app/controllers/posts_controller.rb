@@ -12,6 +12,9 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user_id != current_user.id
+        redirect_to home_index_path
+    end
   end
 
   def update
@@ -20,12 +23,22 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
+    @post = Post.find(params[:id])
+    if @post.user_id == current_user.id
+      @post.destroy
+    end
+    redirect_to home_index_path
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    @like = @post.likes
+    @post.update(likes: @like+1)
     redirect_to home_index_path
   end
 
   private
   def post_params
-    params.require(:post).permit(:img, :likes)
+    params.require(:post).permit(:img)
   end
 end

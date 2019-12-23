@@ -12,7 +12,10 @@
 <% @posts.each do |post| %>
     <div class="postCard">
         <img src=<%= post.img%> /><br />
+        <%= link_to "like", posts_like_path(post), method: :patch %>
+        <%= post.likes%> 
         <%if current_user && current_user.id == post.user_id%>
+             |
             <%= link_to "Edit", posts_edit_path(post)%> | 
             <%= link_to "Destroy", posts_destroy_path(post), method: :delete%>
         <%end%>
