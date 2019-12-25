@@ -5,7 +5,7 @@
     <div class="card shadow">
     <div class="card-header">
     <img class="avatar" src=<%= post.user.image%> alt="Card image cap">
-    <%=link_to post.user.username, posts_user_path(post.user.id) %>
+    <%= post.user.username %>
     </div>
   <img class="card-img-top rounded-0" src=<%= post.img%> alt="Card image cap">
   <div class="card-body d-flex flex-row justify-content-between">

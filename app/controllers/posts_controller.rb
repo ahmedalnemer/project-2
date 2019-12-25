@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new,:create,:edit,:update,:destroy,:like]
   before_action :post_params, only: [:create, :update]
   def new
     @post = current_user.posts.new
@@ -32,9 +32,14 @@ class PostsController < ApplicationController
 
   def like
     @post = Post.find(params[:id])
-    @like = @post.likes
-    @post.update(likes: @like+1)
-    redirect_to home_index_path
+    if !(@post.likes.find_by(user_id: current_user.id))
+      Like.create(post_id: @post.id, user_id: current_user.id)
+      redirect_to home_index_path
+    end
+  end
+
+  def user
+    @posts = Post.where(user_id: params[:id])
   end
 
   private

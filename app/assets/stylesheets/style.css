@@ -2,16 +2,35 @@ body{
     text-align: center;
 }
 
-main{
+.main{
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    flex-flow: column wrap;
+    align-content: space-around;
 }
 
-.postCard{
-    width: 350px;
+.card{
+    width: 600px;
 }
 
-.postCard img{
-    width: 300px;
+.like{
+    width: 30px;
+}
+
+.avatar{
+    border-radius: 50%;
+    width: 50px;
+}
+
+.form{
+    text-align: center;
+}
+
+.rightnav{
+    justify-content: flex-end;
+}
+
+@media(max-width: 615px){
+    .card{
+        width: 98%;
+    }
 }
